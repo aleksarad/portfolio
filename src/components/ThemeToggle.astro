@@ -1,0 +1,80 @@
+<button type="button" data-theme-toggle aria-label="Toggle color theme">
+	<span class="to-light">light</span>
+	<span class="to-dark">dark</span>
+</button>
+
+<script is:inline>
+	document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+		button.addEventListener("click", () => {
+			var current =
+				document.documentElement.getAttribute("data-theme") ||
+				(matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+			var next = current === "dark" ? "light" : "dark";
+			document.documentElement.setAttribute("data-theme", next);
+			localStorage.setItem("theme", next);
+		});
+	});
+</script>
+
+<style>
+	button {
+		position: absolute;
+		bottom: clamp(24px, 5vh, 40px);
+		right: clamp(24px, 8vw, 160px);
+		font-family: "EB Garamond", serif;
+		font-size: 13px;
+		letter-spacing: 0.04em;
+		color: var(--color-dim);
+		background: none;
+		border: none;
+		padding: 10px 0;
+		margin: 0;
+		cursor: pointer;
+		opacity: 0.7;
+	}
+
+	button:hover,
+	button:focus-visible {
+		opacity: 1;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		button {
+			transition: opacity 0.2s ease;
+		}
+	}
+
+	.to-light {
+		display: inline;
+	}
+
+	.to-dark {
+		display: none;
+	}
+
+	@media (prefers-color-scheme: light) {
+		.to-light {
+			display: none;
+		}
+
+		.to-dark {
+			display: inline;
+		}
+	}
+
+	:global(html[data-theme="light"]) .to-light {
+		display: none;
+	}
+
+	:global(html[data-theme="light"]) .to-dark {
+		display: inline;
+	}
+
+	:global(html[data-theme="dark"]) .to-light {
+		display: inline;
+	}
+
+	:global(html[data-theme="dark"]) .to-dark {
+		display: none;
+	}
+</style>
