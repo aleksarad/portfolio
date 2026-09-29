@@ -1,17 +1,30 @@
 ---
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Alexandra Radevich — Frontend Engineer" navVariant="home">
+	<h1>Alexandra Radevich</h1>
+	<p class="tagline">Frontend engineer. New York.</p>
+	<Nav variant="home" />
+</Layout>
+
+<style>
+	h1 {
+		font-family: "Instrument Serif", serif;
+		font-style: italic;
+		font-size: clamp(34px, 5vw, 52px);
+		letter-spacing: 0.04em;
+		color: var(--color-name);
+		margin: 0;
+	}
+
+	.tagline {
+		font-family: "EB Garamond", serif;
+		font-size: 16px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-dim);
+		margin: 6px 0 56px;
+	}
+</style>

@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+	title: string;
+	navVariant?: "home" | "sub";
+}
+
+const { title, navVariant = "sub" } = Astro.props as Props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="shell">
+			<main class={navVariant}>
+				<slot />
+			</main>
+			<Footer />
+		</div>
+	</body>
+</html>
+
+<style>
+	.shell {
+		position: relative;
+		min-height: 100vh;
+	}
+
+	main {
+		padding: clamp(48px, 10vh, 100px) clamp(24px, 8vw, 160px) 140px;
+	}
+
+	main.home {
+		padding-top: clamp(64px, 14vh, 140px);
+	}
+</style>

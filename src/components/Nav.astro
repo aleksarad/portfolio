@@ -1,0 +1,208 @@
+---
+interface Props {
+	variant: "home" | "sub";
+	current?: "about" | "projects";
+}
+
+const { variant, current } = Astro.props as Props;
+
+const homeItems = [
+	{ label: "About", href: "/about" },
+	{ label: "Projects", href: "/projects" },
+	{ label: "Contact", href: "mailto:hello@aleksarad.com" },
+];
+
+const subItems: { key: "about" | "projects"; label: string; href: string }[] = [
+	{ key: "about", label: "About", href: "/about" },
+	{ key: "projects", label: "Projects", href: "/projects" },
+];
+---
+
+{
+	variant === "home" ? (
+		<nav aria-label="Primary">
+			<ul class="home-list">
+				{homeItems.map((item) => (
+					<li>
+						<a href={item.href}>
+							<span class="label">{item.label}</span>
+							<span class="mark" aria-hidden="true">
+								✳
+							</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	) : (
+		<nav aria-label="Primary">
+			<ul class="sub-list">
+				<li>
+					<a href="/" aria-label="Home" class="back">
+						←
+					</a>
+				</li>
+				{subItems.map((item) =>
+					item.key === current ? (
+						<li>
+							<span class="current" aria-current="page">
+								{item.label}
+							</span>
+						</li>
+					) : (
+						<li>
+							<a href={item.href} class="underline-link">
+								<span class="label">{item.label}</span>
+								<span class="underline" aria-hidden="true" />
+							</a>
+						</li>
+					),
+				)}
+				<li>
+					<a href="mailto:hello@aleksarad.com" class="underline-link">
+						<span class="label">Contact</span>
+						<span class="underline" aria-hidden="true" />
+					</a>
+				</li>
+			</ul>
+		</nav>
+	)
+}
+
+<style>
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.home-list {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.home-list a {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		width: max-content;
+		padding: 8px 0;
+	}
+
+	.home-list .label {
+		font-family: "Playfair Display", serif;
+		font-size: clamp(22px, 3vw, 32px);
+		color: var(--color-link);
+	}
+
+	.home-list .mark {
+		font-size: clamp(26px, 3.6vw, 40px);
+		font-weight: 700;
+		line-height: 1;
+		display: inline-block;
+		color: var(--color-accent);
+		opacity: 0;
+		transform-origin: center;
+	}
+
+	.home-list a:hover .mark,
+	.home-list a:focus-visible .mark {
+		opacity: 1;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.home-list .mark {
+			transition: opacity 0.15s ease;
+		}
+
+		.home-list a:hover .mark,
+		.home-list a:focus-visible .mark {
+			animation: ast-pop 0.5s ease;
+		}
+	}
+
+	@keyframes ast-pop {
+		0% {
+			transform: rotate(0deg) scale(1);
+		}
+		45% {
+			transform: rotate(16deg) scale(1.35);
+		}
+		100% {
+			transform: rotate(0deg) scale(1);
+		}
+	}
+
+	.sub-list {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		flex-wrap: wrap;
+	}
+
+	.sub-list li {
+		display: flex;
+		align-items: center;
+	}
+
+	.back {
+		font-family: "Playfair Display", serif;
+		font-size: 20px;
+		line-height: 1;
+		padding: 8px 0;
+		color: var(--color-link);
+	}
+
+	.back:hover,
+	.back:focus-visible {
+		color: var(--color-dim);
+	}
+
+	.current {
+		font-family: "Playfair Display", serif;
+		font-size: 16px;
+		color: var(--color-dim);
+		padding: 8px 0;
+	}
+
+	.underline-link {
+		position: relative;
+		display: inline-block;
+		width: max-content;
+		padding: 8px 0;
+	}
+
+	.underline-link .label {
+		font-family: "Playfair Display", serif;
+		font-size: 16px;
+		color: var(--color-link);
+	}
+
+	.underline-link .underline {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 8px;
+		height: 1px;
+		background: var(--color-accent);
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+
+	.underline-link:hover .underline,
+	.underline-link:focus-visible .underline {
+		transform: scaleX(1);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.underline-link .underline {
+			transition: transform 0.3s ease;
+		}
+	}
+</style>
