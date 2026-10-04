@@ -1,7 +1,12 @@
 [
-	{
-		"id": "placeholder",
-		"title": "Placeholder project",
-		"url": "https://example.com"
-	}
+  {
+    "id": 1,
+    "title": "CSS Avatar Generator",
+    "url": "https://github.com/aleksarad/css-avatars"
+  },
+  {
+    "id": 2,
+    "title": "Selected works in CSS",
+    "url": "https://codepen.io/collection/XWmPNK"
+  }
 ]
