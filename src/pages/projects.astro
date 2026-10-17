@@ -8,18 +8,20 @@ const projects = await getCollection("projects");
 ---
 
 <Layout title="Projects">
-	<Nav variant="sub" current="projects" />
-	<h1 class="sr-only">Projects</h1>
-	<div class="list">
-		{projects.map((project) => <ProjectItem {...project.data} />)}
-	</div>
+  <Nav variant="sub" current="projects" />
+  <h1 class="sr-only">Projects</h1>
+  <div class="list">
+    {projects.map((project) => (
+      <ProjectItem {...project.data} />
+    ))}
+  </div>
 </Layout>
 
 <style>
-	.list {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-		margin-top: 56px;
-	}
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 56px;
+  }
 </style>
