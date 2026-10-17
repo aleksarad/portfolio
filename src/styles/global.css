@@ -5,6 +5,7 @@
   --color-dim: oklch(0.58 0 0);
   --color-body: oklch(0.72 0 0);
   --color-accent: oklch(0.72 0.23 350);
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: light) {
@@ -15,6 +16,7 @@
     --color-dim: oklch(0.5 0 0);
     --color-body: oklch(0.35 0 0);
     --color-accent: oklch(0.55 0.23 350);
+    color-scheme: light;
   }
 }
 
@@ -25,6 +27,7 @@
   --color-dim: oklch(0.5 0 0);
   --color-body: oklch(0.35 0 0);
   --color-accent: oklch(0.55 0.23 350);
+  color-scheme: light;
 }
 
 :root[data-theme="dark"] {
@@ -34,6 +37,7 @@
   --color-dim: oklch(0.58 0 0);
   --color-body: oklch(0.72 0 0);
   --color-accent: oklch(0.72 0.23 350);
+  color-scheme: dark;
 }
 
 *,
