@@ -13,6 +13,7 @@ const { title, url } = Astro.props as Props;
 <a href={url} target="_blank" rel="noopener noreferrer" class="underline-link">
   <span class="label">{title}</span>
   <span class="underline" aria-hidden="true"></span>
+  <span class="sr-only"> (opens in new tab)</span>
 </a>
 
 <style>

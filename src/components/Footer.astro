@@ -3,12 +3,14 @@ import { site } from "../site";
 ---
 
 <footer>
-  <a href={site.github} target="_blank" rel="noopener">
-    © 2026 aleksarad
+  © {new Date().getFullYear()} aleksarad
+  <span aria-hidden="true">·</span>
+  <a href={site.github} target="_blank" rel="noopener noreferrer">
+    github<span class="sr-only"> (opens in new tab)</span>
   </a>
   <span aria-hidden="true">·</span>
-  <a href={site.linkedin} target="_blank" rel="noopener">
-    linkedin
+  <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+    linkedin<span class="sr-only"> (opens in new tab)</span>
   </a>
 </footer>
 
