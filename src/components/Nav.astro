@@ -1,4 +1,6 @@
 ---
+import { site } from "../site";
+
 interface Props {
   variant: "home" | "sub";
   current?: "about" | "projects";
@@ -9,7 +11,7 @@ const { variant, current } = Astro.props as Props;
 const homeItems = [
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "mailto:hello@aleksarad.com" },
+  { label: "Contact", href: `mailto:${site.email}` },
 ];
 
 const subItems: { key: "about" | "projects"; label: string; href: string }[] = [
@@ -61,7 +63,7 @@ const plainTextAsterisk = "\u{2733}\u{FE0E}";
         ),
       )}
       <li>
-        <a href="mailto:hello@aleksarad.com" class="underline-link">
+        <a href={`mailto:${site.email}`} class="underline-link">
           <span class="label">Contact</span>
           <span class="underline" aria-hidden="true" />
         </a>

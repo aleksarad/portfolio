@@ -8,6 +8,7 @@ import "@fontsource/eb-garamond/400-italic.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import Footer from "../components/Footer.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import { site } from "../site";
 
 interface Props {
   title: string;
@@ -20,20 +21,19 @@ const { title, navVariant = "sub", description } = Astro.props as Props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og.png", Astro.site);
 
+const siteURL = new URL(Astro.site ?? "/");
+
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "https://aleksarad.com/",
-  name: "Alexandra Radevich",
-  jobTitle: "Frontend Engineer",
-  url: "https://aleksarad.com/",
+  "@id": siteURL.href,
+  name: site.name,
+  jobTitle: site.jobTitle,
+  url: siteURL.href,
   description:
     "Alexandra Radevich is a Frontend Engineer specializing in React, TypeScript, and CSS art.",
   knowsAbout: ["Web Development", "React", "JavaScript", "TypeScript"],
-  sameAs: [
-    "https://www.linkedin.com/in/alexandra-radevich",
-    "https://github.com/aleksarad",
-  ],
+  sameAs: [site.linkedin, site.github],
 };
 ---
 
@@ -56,7 +56,7 @@ const personSchema = {
     <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Alexandra Radevich" />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
