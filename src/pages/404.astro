@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<Layout
+  title="Page not found — Alexandra Radevich"
+  description="Page not found."
+>
+  <Nav variant="sub" />
+  <h1>Page not found</h1>
+  <p class="body">
+    <a href="/" class="underline-link">
+      <span class="label">Head back home.</span>
+      <span class="underline" aria-hidden="true"></span>
+    </a>
+  </p>
+</Layout>
+
+<style>
+  h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    color: var(--color-link);
+    margin-top: 56px;
+  }
+
+  .body {
+    font-family: "EB Garamond", serif;
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.75;
+    color: var(--color-body);
+    max-width: 600px;
+  }
+
+  .underline-link {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .underline-link .underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    height: 1px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .underline-link:hover .underline,
+  .underline-link:focus-visible .underline {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .underline-link .underline {
+      transition: transform 0.3s ease;
+    }
+  }
+</style>
