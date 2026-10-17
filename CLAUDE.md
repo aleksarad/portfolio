@@ -51,6 +51,7 @@ Hover/transition timing is 0.15–0.3s ease. Motion is decorative (underline rev
 - Projects are data (a content collection with a schema — title, url, and optionally year/description/tags), not markup. Add fields to the schema, not one-off HTML per project.
 - One concern per commit; small, scoped diffs.
 - Keep Claude's co-author attribution on commits it authors or contributes to.
+- Formatting is Prettier, using the repo's `.prettierrc.json` config. Run `npm run format` before proposing a commit.
 
 ## Accessibility rules (non-negotiable)
 
