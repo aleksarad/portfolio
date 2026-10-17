@@ -3,28 +3,32 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 ---
 
-<Layout title="Alexandra Radevich — Frontend Engineer" navVariant="home">
-	<h1>Alexandra Radevich</h1>
-	<p class="tagline">Frontend engineer. New York.</p>
-	<Nav variant="home" />
+<Layout
+  title="Alexandra Radevich"
+  navVariant="home"
+  description="Frontend Engineer and CSS enthusiast"
+>
+  <h1>Alexandra Radevich</h1>
+  <p class="tagline">Frontend engineer. New York.</p>
+  <Nav variant="home" />
 </Layout>
 
 <style>
-	h1 {
-		font-family: "Instrument Serif", serif;
-		font-style: italic;
-		font-size: clamp(34px, 5vw, 52px);
-		letter-spacing: 0.04em;
-		color: var(--color-name);
-		margin: 0;
-	}
+  h1 {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: clamp(34px, 5vw, 52px);
+    letter-spacing: 0.04em;
+    color: var(--color-name);
+    margin: 0;
+  }
 
-	.tagline {
-		font-family: "EB Garamond", serif;
-		font-size: 16px;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--color-dim);
-		margin: 6px 0 56px;
-	}
+  .tagline {
+    font-family: "EB Garamond", serif;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-dim);
+    margin: 6px 0 56px;
+  }
 </style>

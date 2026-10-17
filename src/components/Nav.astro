@@ -16,6 +16,9 @@ const subItems: { key: "about" | "projects"; label: string; href: string }[] = [
 	{ key: "about", label: "About", href: "/about" },
 	{ key: "projects", label: "Projects", href: "/projects" },
 ];
+
+// on some OS in mobile, "*" gets converted to emoji
+const plainTextAsterisk = '\u{2733}\u{FE0E}'
 ---
 
 {
@@ -27,7 +30,7 @@ const subItems: { key: "about" | "projects"; label: string; href: string }[] = [
 						<a href={item.href}>
 							<span class="label">{item.label}</span>
 							<span class="mark" aria-hidden="true">
-								✳
+								{plainTextAsterisk}
 							</span>
 						</a>
 					</li>

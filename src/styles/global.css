@@ -42,6 +42,11 @@
 	box-sizing: border-box;
 }
 
+a,
+button {
+	-webkit-tap-highlight-color: transparent;
+}
+
 body {
 	margin: 0;
 	background: var(--color-bg);

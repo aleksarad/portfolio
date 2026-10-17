@@ -10,51 +10,75 @@ import Footer from "../components/Footer.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 
 interface Props {
-	title: string;
-	navVariant?: "home" | "sub";
+  title: string;
+  description: string;
+  navVariant?: "home" | "sub";
 }
 
-const { title, navVariant = "sub" } = Astro.props as Props;
+const { title, navVariant = "sub", description } = Astro.props as Props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://aleksarad.com/",
+  name: "Alexandra Radevich",
+  jobTitle: "Frontend Engineer",
+  url: "https://aleksarad.com/",
+  image: "https://example.com",
+  description:
+    "Alexandra Radevich is a Software Engineer specializing in React, TypeScript, and CSS art.",
+  knowsAbout: ["Web Development", "React", "JavaScript", "TypeScript"],
+  sameAs: [
+    "https://www.linkedin.com/in/alexandra-radevich",
+    "https://github.com/aleksarad",
+  ],
+};
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<script is:inline>
-			(function () {
-				var stored = localStorage.getItem("theme");
-				if (stored === "light" || stored === "dark") {
-					document.documentElement.setAttribute("data-theme", stored);
-				}
-			})();
-		</script>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<div class="shell">
-			<main class={navVariant}>
-				<slot />
-			</main>
-			<Footer />
-			<ThemeToggle />
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+  </head>
+  <body>
+    <div class="shell">
+      <main class={navVariant}>
+        <slot />
+      </main>
+      <Footer />
+      <ThemeToggle />
+    </div>
+  </body>
 </html>
 
 <style>
-	.shell {
-		position: relative;
-		min-height: 100vh;
-	}
+  .shell {
+    position: relative;
+    min-height: 100vh;
+  }
 
-	main {
-		padding: clamp(48px, 10vh, 100px) clamp(24px, 8vw, 160px) 140px;
-	}
+  main {
+    padding: clamp(48px, 10vh, 100px) clamp(24px, 8vw, 160px) 140px;
+  }
 
-	main.home {
-		padding-top: clamp(64px, 14vh, 140px);
-	}
+  main.home {
+    padding-top: clamp(64px, 14vh, 140px);
+  }
 </style>
