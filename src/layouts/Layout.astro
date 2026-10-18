@@ -7,7 +7,6 @@ import "@fontsource/eb-garamond/400.css";
 import "@fontsource/eb-garamond/400-italic.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import Footer from "../components/Footer.astro";
-import ThemeToggle from "../components/ThemeToggle.astro";
 import { site } from "../site";
 
 interface Props {
@@ -80,7 +79,6 @@ const personSchema = {
         <slot />
       </main>
       <Footer />
-      <ThemeToggle />
     </div>
   </body>
 </html>
