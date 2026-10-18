@@ -12,10 +12,10 @@ import { site } from "../site";
 interface Props {
   title: string;
   description: string;
-  navVariant?: "home" | "sub";
+  variant?: "home" | "sub";
 }
 
-const { title, navVariant = "sub", description } = Astro.props as Props;
+const { title, variant = "sub", description } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og.png", Astro.site);
@@ -75,7 +75,7 @@ const personSchema = {
   </head>
   <body>
     <div class="shell">
-      <main class={navVariant}>
+      <main class={variant}>
         <slot />
       </main>
       <Footer />
