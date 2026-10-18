@@ -41,7 +41,10 @@ const personSchema = {
     <meta charset="utf-8" />
     <script is:inline>
       (function () {
-        var stored = localStorage.getItem("theme");
+        var stored;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch (e) {}
         if (stored === "light" || stored === "dark") {
           document.documentElement.setAttribute("data-theme", stored);
         }
