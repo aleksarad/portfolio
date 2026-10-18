@@ -27,7 +27,7 @@ const { title, url } = Astro.props as Props;
   }
 
   .label {
-    font-family: "Playfair Display", serif;
+    font-family: var(--font-heading);
     font-size: clamp(20px, 3vw, 24px);
     color: var(--color-link);
   }

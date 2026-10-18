@@ -36,6 +36,8 @@ Three serif families, used deliberately, not interchangeably:
 
 Sizes are fluid via `clamp()` rather than fixed breakpoints.
 
+Each family is a CSS custom property on `:root`: `--font-name`, `--font-heading`, `--font-body`. Use the token, not a literal `font-family` string.
+
 ### Spacing
 
 Interactive text (links, nav items) carry generous vertical padding (8–10px) for comfortable tap targets even though they render as plain text.

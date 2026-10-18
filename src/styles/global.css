@@ -6,6 +6,10 @@
   --color-body: oklch(0.72 0 0);
   --color-accent: oklch(0.72 0.23 350);
   color-scheme: dark;
+
+  --font-name: "Instrument Serif", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "EB Garamond", serif;
 }
 
 @media (prefers-color-scheme: light) {
@@ -55,6 +59,7 @@ body {
   margin: 0;
   background: var(--color-bg);
   color: var(--color-body);
+  font-family: var(--font-body);
 }
 
 @media (prefers-reduced-motion: no-preference) {
