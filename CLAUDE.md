@@ -31,7 +31,7 @@ All text-on-background pairings must pass WCAG AA (4.5:1 for text under ~24px/18
 Three serif families, used deliberately, not interchangeably:
 
 - **Instrument Serif** (italic) — the name/hero only. One place, one use.
-- **Playfair Display** (400/500/600) — nav links, section headings, project titles.
+- **Playfair Display** (400) — nav links, section headings, project titles.
 - **EB Garamond** (regular + italic) — body copy, taglines, footer text.
 
 Sizes are fluid via `clamp()` rather than fixed breakpoints.
