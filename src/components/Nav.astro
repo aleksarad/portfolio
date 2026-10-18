@@ -1,5 +1,6 @@
 ---
 import { site } from "../site";
+import UnderlineLink from "./UnderlineLink.astro";
 
 interface Props {
   variant: "home" | "sub";
@@ -55,18 +56,16 @@ const plainTextAsterisk = "\u{2733}\u{FE0E}";
           </li>
         ) : (
           <li>
-            <a href={item.href} class="underline-link">
-              <span class="label">{item.label}</span>
-              <span class="underline" aria-hidden="true" />
-            </a>
+            <UnderlineLink href={item.href} variant="nav">
+              {item.label}
+            </UnderlineLink>
           </li>
         ),
       )}
       <li>
-        <a href={`mailto:${site.email}`} class="underline-link">
-          <span class="label">Contact</span>
-          <span class="underline" aria-hidden="true" />
-        </a>
+        <UnderlineLink href={`mailto:${site.email}`} variant="nav">
+          Contact
+        </UnderlineLink>
       </li>
     </ul>
   </nav>
@@ -172,40 +171,5 @@ const plainTextAsterisk = "\u{2733}\u{FE0E}";
     font-size: 16px;
     color: var(--color-dim);
     padding: 8px 0;
-  }
-
-  .underline-link {
-    position: relative;
-    display: inline-block;
-    width: max-content;
-    padding: 8px 0;
-  }
-
-  .underline-link .label {
-    font-family: var(--font-heading);
-    font-size: 16px;
-    color: var(--color-link);
-  }
-
-  .underline-link .underline {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 8px;
-    height: 1px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-
-  .underline-link:hover .underline,
-  .underline-link:focus-visible .underline {
-    transform: scaleX(1);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .underline-link .underline {
-      transition: transform 0.3s ease;
-    }
   }
 </style>
