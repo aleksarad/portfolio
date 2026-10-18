@@ -8,7 +8,9 @@ import Nav from "../components/Nav.astro";
   variant="home"
   description="Frontend Engineer and CSS enthusiast"
 >
-  <h1>Alexandra Radevich</h1>
+  <h1>
+    Alexandra Radev<span>i</span>ch
+  </h1>
   <p class="tagline">Frontend engineer. New York.</p>
   <Nav variant="home" />
 </Layout>
@@ -17,18 +19,84 @@ import Nav from "../components/Nav.astro";
   h1 {
     font-family: var(--font-name);
     font-style: italic;
-    font-size: clamp(34px, 5vw, 52px);
+    font-size: clamp(2.125rem, 5vw, 3.25rem);
+
     letter-spacing: 0.04em;
     color: var(--color-name);
     margin: 0;
   }
 
+  span {
+    position: relative;
+    display: inline-block;
+  }
+
+  span::before {
+    content: "\2733\fe0e";
+    position: absolute;
+    font-style: normal;
+    font-family: var(--font-secondary);
+    color: var(--color-accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    left: -86%;
+    top: -14%;
+    width: 1em;
+    height: 1em;
+    transform-origin: center center;
+    opacity: 0;
+  }
+
+  span::after {
+    content: "";
+    position: absolute;
+    left: 40%;
+    top: 18%;
+    width: 0.15em;
+    height: 0.17em;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    span::before {
+      animation: spin 2s cubic-bezier(0, 0, 0.58, 1) forwards;
+    }
+
+    span::after {
+      animation: fade 2s ease-in;
+    }
+  }
+
+  @keyframes fade {
+    0% {
+      background-color: var(--color-name);
+    }
+    100% {
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg) scale(1.5);
+      opacity: 1;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: rotate(360deg) scale(0.5);
+      opacity: 0;
+    }
+  }
+
   .tagline {
-    font-family: var(--font-body);
+    font-family: var(--font-secondary);
     font-size: 16px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-dim);
     margin: 6px 0 56px;
   }
 </style>

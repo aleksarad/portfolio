@@ -21,7 +21,7 @@ Colors are authored in OKLCH and set as CSS custom properties on `:root`, with a
 | `--color-name`   | `oklch(0.97 0.002 90)` | `oklch(0.15 0 0)`      | The name / hero heading                                                                          |
 | `--color-link`   | `oklch(0.9 0 0)`       | `oklch(0.2 0 0)`       | Primary nav links and project titles                                                             |
 | `--color-dim`    | `oklch(0.58 0 0)`      | `oklch(0.5 0 0)`       | Current-page nav state, muted footer text                                                        |
-| `--color-body`   | `oklch(0.72 0 0)`      | `oklch(0.35 0 0)`      | Body copy (About paragraph)                                                                      |
+| `--color-body`   | `oklch(0.72 0 0)`      | `oklch(0.35 0 0)`      | Body copy (About paragraph, tagline)                                                             |
 | `--color-accent` | `oklch(0.72 0.23 350)` | `oklch(0.55 0.23 350)` | Sparse decorative accent (hover underline, hover mark) — do not use for body text or large fills |
 
 All text-on-background pairings must pass WCAG AA (4.5:1 for text under ~24px/18.5px bold; 3:1 for larger text) in **both** themes. `--color-dim` and `--color-body` are the tightest margins — re-check contrast whenever these values change.
@@ -31,12 +31,12 @@ All text-on-background pairings must pass WCAG AA (4.5:1 for text under ~24px/18
 Three serif families, used deliberately, not interchangeably:
 
 - **Instrument Serif** (italic) — the name/hero only. One place, one use.
-- **Playfair Display** (400) — nav links, section headings, project titles.
-- **EB Garamond** (regular + italic) — body copy, taglines, footer text.
+- **Playfair Display** (400) — the default body font: nav links, section headings, project titles, and body copy (About, 404). Set once on `body` and inherited; don't redeclare it on individual elements.
+- **EB Garamond** (regular + italic) — the muted/secondary exception: taglines, footer text, the theme toggle. Must be applied explicitly wherever it's used, since it's not the inherited default.
 
 Sizes are fluid via `clamp()` rather than fixed breakpoints.
 
-Each family is a CSS custom property on `:root`: `--font-name`, `--font-heading`, `--font-body`. Use the token, not a literal `font-family` string.
+Each family is a CSS custom property on `:root`: `--font-name` (hero), `--font-body` (Playfair, the default), `--font-secondary` (EB Garamond, the exception). Use the token, not a literal `font-family` string — except where relying on inheritance from `body`'s `--font-body` is the deliberate choice.
 
 ### Spacing
 

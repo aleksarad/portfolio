@@ -8,8 +8,8 @@
   color-scheme: dark;
 
   --font-name: "Instrument Serif", serif;
-  --font-heading: "Playfair Display", serif;
-  --font-body: "EB Garamond", serif;
+  --font-body: "Playfair Display", serif;
+  --font-secondary: "EB Garamond", serif;
 }
 
 @media (prefers-color-scheme: light) {
