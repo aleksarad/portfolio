@@ -4,7 +4,9 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import ProjectItem from "../components/ProjectItem.astro";
 
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort(
+  (a, b) => Number(a.id) - Number(b.id),
+);
 ---
 
 <Layout
@@ -13,11 +15,13 @@ const projects = await getCollection("projects");
 >
   <Nav variant="sub" current="projects" />
   <h1 class="sr-only">Projects</h1>
-  <div class="list">
+  <ul class="list">
     {projects.map((project) => (
-      <ProjectItem {...project.data} />
+      <li>
+        <ProjectItem {...project.data} />
+      </li>
     ))}
-  </div>
+  </ul>
 </Layout>
 
 <style>
@@ -25,6 +29,9 @@ const projects = await getCollection("projects");
     display: flex;
     flex-direction: column;
     gap: 2px;
+    margin: 0;
     margin-top: 56px;
+    padding: 0;
+    list-style: none;
   }
 </style>

@@ -1,15 +1,10 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import UnderlineLink from "./UnderlineLink.astro";
 
-interface Props {
-  title: string;
-  url: string;
-  year?: number;
-  description?: string;
-  tags?: string[];
-}
+type Props = CollectionEntry<"projects">["data"];
 
-const { title, url } = Astro.props as Props;
+const { title, url } = Astro.props;
 ---
 
 <UnderlineLink href={url} variant="project" external>
