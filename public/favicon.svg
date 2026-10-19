@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <text y=".9em" font-size="90">🪩</text>
+  <g stroke="#ff56b8" stroke-width="13" stroke-linecap="round">
+    <path d="M50 8v84M8 50h84M20.3 20.3l59.4 59.4M79.7 20.3L20.3 79.7" />
+  </g>
 </svg>
-
