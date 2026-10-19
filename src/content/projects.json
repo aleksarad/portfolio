@@ -2,11 +2,21 @@
   {
     "id": 1,
     "title": "CSS Avatar Generator",
-    "url": "https://github.com/aleksarad/css-avatars"
+    "url": "https://aleksarad.github.io/css-avatars/",
+    "description": "A code generator for custom CSS avatars."
   },
   {
     "id": 2,
-    "title": "Selected works in CSS",
-    "url": "https://codepen.io/collection/XWmPNK"
+    "title": "Pink Nintendo DS",
+    "url": "https://codepen.io/aradevich/full/mdRYzyJ",
+    "category": "CSS Art",
+    "description": "Photorealistic, built entirely with CSS."
+  },
+  {
+    "id": 3,
+    "title": "More CSS Art",
+    "url": "https://codepen.io/collection/XWmPNK",
+    "category": "",
+    "description": ""
   }
 ]

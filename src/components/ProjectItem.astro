@@ -4,9 +4,20 @@ import UnderlineLink from "./UnderlineLink.astro";
 
 type Props = CollectionEntry<"projects">["data"];
 
-const { title, url } = Astro.props;
+const { title, url, description } = Astro.props;
 ---
 
-<UnderlineLink href={url} variant="project" external>
-  {title}
-</UnderlineLink>
+<div>
+  <UnderlineLink href={url} variant="project" external>
+    {title}
+  </UnderlineLink>
+  <p>{description}</p>
+</div>
+
+<style>
+  p {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-family: var(--font-secondary);
+  }
+</style>
