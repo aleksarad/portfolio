@@ -62,7 +62,15 @@ import Nav from "../components/Nav.astro";
 
   @media (prefers-reduced-motion: no-preference) {
     span::before {
-      animation: spin 2.2s cubic-bezier(0, 0, 0.58, 1) forwards;
+      animation: spin 2.2s cubic-bezier(0, 0, 0.58, 1);
+      transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+    }
+
+    span:hover::before {
+      opacity: 1;
+      transform: rotate(15deg) scale(0.8);
     }
 
     span::after {
