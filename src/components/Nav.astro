@@ -19,9 +19,6 @@ const subItems: { key: "about" | "projects"; label: string; href: string }[] = [
   { key: "about", label: "About", href: "/about" },
   { key: "projects", label: "Projects", href: "/projects" },
 ];
-
-// on some OS in mobile, "*" gets converted to emoji
-const plainTextAsterisk = "\u{2733}\u{FE0E}";
 ---
 
 {variant === "home" ? (
@@ -30,9 +27,9 @@ const plainTextAsterisk = "\u{2733}\u{FE0E}";
       {homeItems.map((item) => (
         <li>
           <a href={item.href}>
-            <span class="label">{item.label}</span>
-            <span class="mark" aria-hidden="true">
-              {plainTextAsterisk}
+            <span class="label">
+              {item.label}
+              <span class="underline" aria-hidden="true" />
             </span>
           </a>
         </li>
@@ -91,52 +88,35 @@ const plainTextAsterisk = "\u{2733}\u{FE0E}";
 
   .home-list a {
     display: flex;
-    align-items: center;
-    gap: 12px;
     width: max-content;
     padding: 8px 0;
   }
 
   .home-list .label {
+    position: relative;
     font-size: clamp(22px, 3vw, 32px);
     color: var(--color-link);
   }
 
-  .home-list .mark {
-    font-size: clamp(26px, 3.6vw, 40px);
-    font-weight: 700;
-    line-height: 1;
-    display: inline-block;
-    color: var(--color-accent);
-    opacity: 0;
-    transform-origin: center;
+  .home-list .underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
   }
 
-  .home-list a:hover .mark,
-  .home-list a:focus-visible .mark {
-    opacity: 1;
+  .home-list a:hover .underline,
+  .home-list a:focus-visible .underline {
+    transform: scaleX(1);
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .home-list .mark {
-      transition: opacity 0.15s ease;
-    }
-
-    .home-list a:hover .mark,
-    .home-list a:focus-visible .mark {
-      animation: ast-pop 0.5s ease;
-    }
-  }
-
-  @keyframes ast-pop {
-    0% {
-      transform: rotate(0deg) scale(1);
-    }
-    45% {
-      transform: rotate(16deg) scale(1.3);
-    }
-    100% {
-      transform: rotate(0deg) scale(1);
+    .home-list .underline {
+      transition: transform 0.3s ease;
     }
   }
 
