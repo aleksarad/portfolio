@@ -44,12 +44,68 @@
     }
   }
 
+  .to-light,
+  .to-dark {
+    position: relative;
+  }
+
   .to-light {
     display: inline;
   }
 
   .to-dark {
     display: none;
+  }
+
+  /* Decorative sun/moon mark that appears on hover/focus. */
+  .to-light::after,
+  .to-dark::after {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -10px;
+    left: 0;
+    font-size: 24px;
+    color: var(--color-accent);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* \FE0E forces text (not emoji) presentation; the "/ ''" alt text hides the
+     glyph from screen readers. The plain declaration is a fallback for
+     browsers without alt-text support. */
+  .to-light::after {
+    content: "\2600\FE0E";
+    content: "\2600\FE0E" / "";
+  }
+
+  .to-dark::after {
+    /* to-do: make own moon with css? */
+    content: "\263D";
+    content: "\263D" / "";
+  }
+
+  button:hover .to-light::after,
+  button:hover .to-dark::after,
+  button:focus-visible .to-light::after,
+  button:focus-visible .to-dark::after {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .to-light::after,
+    .to-dark::after {
+      transition:
+        opacity 1s ease,
+        transform 1s ease;
+    }
+
+    button:hover .to-light::after,
+    button:hover .to-dark::after,
+    button:focus-visible .to-light::after,
+    button:focus-visible .to-dark::after {
+      transform: translateY(-35px);
+    }
   }
 
   @media (prefers-color-scheme: light) {
